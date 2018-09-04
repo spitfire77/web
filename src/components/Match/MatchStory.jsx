@@ -15,7 +15,7 @@ import {
 } from '../../utility';
 import { StyledEmote, StyledStoryNetWorthBar, StyledStoryNetWorthText, StyledStorySpan, StyledStoryWrapper } from './StyledMatch';
 import constants from '../constants';
-import store from '../../store';
+import store from '../../common/store';
 
 const heroesArr = jsonFn(heroes);
 

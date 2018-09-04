@@ -7,7 +7,7 @@ import {
   isRoshHero,
   isActiveItem,
 } from '../utility';
-import store from '../store';
+import store from '../common/store';
 
 export default function analyzeMatch(match, _pm) {
   const { strings } = store.getState().app;

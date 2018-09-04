@@ -18,7 +18,7 @@ import { hydrate, render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route, Router } from 'react-router-dom';
 import { injectGlobal } from 'styled-components';
-import store from './store';
+import store from './common/store';
 import { getMetadata, getStrings, getAbilities, getHeroAbilities, getNeutralAbilities, getAbilityIds } from './actions';
 import App from './components/App';
 import constants from './components/constants';

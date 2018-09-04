@@ -4,7 +4,7 @@ import patchData from 'dotaconstants/build/patch.json';
 import itemData from 'dotaconstants/build/items.json';
 import regionData from 'dotaconstants/build/region.json';
 import clusterData from 'dotaconstants/build/cluster.json';
-import store from '../../store';
+import store from '../../common/store';
 // import { isActiveItem } from '../../utility';
 
 const getItemSuffix = itemKey => (['_2', '_3', '_4', '_5'].some(suffix => itemKey.indexOf(suffix) !== -1) ? itemKey[itemKey.length - 1] : '');
@@ -32,9 +32,9 @@ const getFields = (players = [], leagues = [], teams = []) => {
     text: `${strings.explorer_timing} - ${itemData[itemKey].dname} ${getItemSuffix(itemKey)}`,
     value: 'match_logs.time',
     order: 'ASC',
-    join: `JOIN match_logs 
-  ON match_logs.match_id = matches.match_id 
-  AND player_matches.player_slot = match_logs.targetname_slot 
+    join: `JOIN match_logs
+  ON match_logs.match_id = matches.match_id
+  AND player_matches.player_slot = match_logs.targetname_slot
   AND match_logs.type = 'DOTA_COMBATLOG_PURCHASE'
   AND match_logs.valuename = 'item_${itemKey}'`,
     key: `timing_${itemKey}`,
@@ -50,9 +50,9 @@ const getFields = (players = [], leagues = [], teams = []) => {
     text: `${strings.explorer_kill} - ${text}`,
     value: 'match_logs.time',
     order: 'ASC',
-    join: `JOIN match_logs 
-  ON match_logs.match_id = matches.match_id 
-  AND player_matches.player_slot = match_logs.sourcename_slot 
+    join: `JOIN match_logs
+  ON match_logs.match_id = matches.match_id
+  AND player_matches.player_slot = match_logs.sourcename_slot
   AND match_logs.type = 'DOTA_COMBATLOG_DEATH'
   AND match_logs.targetname LIKE '${unitKey}'`,
     key: `kill_${unitKey}`,
@@ -329,7 +329,7 @@ const getFields = (players = [], leagues = [], teams = []) => {
         groupKey: 'player_matches.hero_id, player_matches2.hero_id',
         joinFn: props => `JOIN player_matches player_matches2
 ON player_matches.match_id = player_matches2.match_id
-AND player_matches.hero_id != player_matches2.hero_id 
+AND player_matches.hero_id != player_matches2.hero_id
 AND abs(player_matches.player_slot - player_matches2.player_slot) < 10
 ${props.hero && props.hero.value ? '' : 'AND player_matches.hero_id < player_matches2.hero_id'}`,
         key: 'hero_combos',
@@ -351,7 +351,7 @@ ${props.hero && props.hero.value ? '' : 'AND player_matches.hero_id < player_mat
         groupKey: 'player_matches.account_id, player_matches2.account_id',
         joinFn: props => `JOIN player_matches player_matches2
 ON player_matches.match_id = player_matches2.match_id
-AND player_matches.account_id != player_matches2.account_id 
+AND player_matches.account_id != player_matches2.account_id
 AND abs(player_matches.player_slot - player_matches2.player_slot) < 10
 ${props.player && props.player.value ? '' : 'AND player_matches.account_id < player_matches2.account_id'}`,
         key: 'player_player',

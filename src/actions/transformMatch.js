@@ -8,7 +8,7 @@ import {
   unpackPositionData,
 } from '../utility';
 import analyzeMatch from './analyzeMatch';
-import store from '../store';
+import store from '../common/store';
 
 let expandedUnitNames = null;
 

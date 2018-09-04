@@ -20,7 +20,7 @@ import {
   FromNowTooltip,
 } from '../components/Visualizations';
 import constants from '../components/constants';
-import store from '../store';
+import store from '../common/store';
 
 const second = 1;
 const minute = second * 60;

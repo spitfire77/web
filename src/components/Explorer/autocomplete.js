@@ -1,6 +1,6 @@
 import heroes from 'dotaconstants/build/heroes.json';
 import items from 'dotaconstants/build/items.json';
-import store from '../../store';
+import store from '../../common/store';
 // import fields from './fields';
 
 const sqlfs = ['SELECT', 'WHERE', 'GROUP BY', 'ORDER BY'];

@@ -3,7 +3,7 @@ import heroData from 'dotaconstants/build/heroes.json';
 import gameModeData from 'dotaconstants/build/game_mode.json';
 import lobbyTypeData from 'dotaconstants/build/lobby_type.json';
 // import patchData from 'dotaconstants/build/patch.json';
-import store from '../../store';
+import store from '../../common/store';
 
 const getFields = () => {
   const { strings } = store.getState().app;
